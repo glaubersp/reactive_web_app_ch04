@@ -1,0 +1,18 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# https://www.playframework.com/documentation/latest/ScalaRouting
+# ~~~~
+
+# An example controller showing a sample home page
+GET         /                                                              controllers.Quiz.clear
+
+PUT         /import/word/:sourceLang/:word/:targetLang/:translation        controllers.Import.importWord(sourceLang: play.api.i18n.Lang, word, targetLang: play.api.i18n.Lang, translation)
+
+GET         /quiz/:sourceLang                                              controllers.Quiz.quiz(sourceLang: play.api.i18n.Lang,  targetLang: Option[play.api.i18n.Lang])
+
+GET         /quiz/interactive/:sourceLang/:targetLang                      controllers.Quiz.quizEndpoint(sourceLang: play.api.i18n.Lang, targetLang: play.api.i18n.Lang)
+
+POST        /quiz/:sourceLang/check/:word                                  controllers.Quiz.check(sourceLang: play.api.i18n.Lang, word, targetLang: Option[play.api.i18n.Lang], translation)
+
+# Map static resources from the /public folder to the /assets URL path
+GET         /assets/*file                                                  controllers.Assets.versioned(path="/public", file: Asset)
